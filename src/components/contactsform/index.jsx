@@ -21,7 +21,7 @@ class ContactsForm extends Component {
             className={styles.formInput}
             name="name"
             id="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            pattern="^[a-zA-Zа-яА-Я\s'-]+$"
             title="Name may contain only letters, apostrophes, dashes and spaces. For example, Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
             required
           />
