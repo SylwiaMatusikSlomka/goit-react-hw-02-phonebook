@@ -27,10 +27,10 @@ export class App extends Component {
   handlerSubmit = ev => {
     ev.preventDefault();
     const { name, number } = this.state;
-    if (this.validateName(name)) {
+    if (!this.validateName(name)) {
       return alert(`${name} is not correct`);
     }
-    if (this.validatePhoneNumber(number)) {
+    if (!this.validatePhoneNumber(number)) {
       return alert(`${number} is not correct`);
     }
     const id = nanoid();
