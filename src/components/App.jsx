@@ -10,12 +10,29 @@ export class App extends Component {
     filter: '',
   };
 
+  validateName = name => {
+    const namePattern = /^[a-zA-Zа-яА-Я\s'-]+$/;
+    return namePattern.test(name);
+  }
+
+  validatePhoneNumber = number => {
+    const phoneNumberPattern = /^(\+?[0-9]{1,4})?[-.\s]?(\(?[0-9]{1,3}?\))?[-.\s]?[0-9]{1,4}[-.\s]?[0-9]{1,4}[-.\s]?[0-9]{1,9}$/;
+    return phoneNumberPattern.test(number);
+  }
+
   handlerChange = ev => {
     this.setState({ [ev.target.name]: ev.target.value });
   };
+  
   handlerSubmit = ev => {
     ev.preventDefault();
     const { name, number } = this.state;
+    if (this.validateName(name)) {
+      return alert(`${name} is not correct`);
+    }
+    if (this.validatePhoneNumber(number)) {
+      return alert(`${number} is not correct`);
+    }
     const id = nanoid();
     console.log(name, id);
     if (this.filterContacts(name).length !== 0) {
